@@ -1,0 +1,43 @@
+\usepackage{polyglossia}
+\setmainlanguage[variant=british]{english}
+\usepackage[none]{hyphenat}
+
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{booktabs,multirow}
+\usepackage{graphicx}
+\usepackage{enumerate,enumitem}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage[figure]{hypcap}
+\usepackage{float}
+
+\usepackage{cool}
+\Style{DSymb={\mathrm{d}},IntegrateDifferentialDSymb={\mathrm{d}}}
+
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\defaultfontfeatures{Ligatures=TeX,ExternalLocation=fonts/,Extension=.otf}
+\setmathfont{LibertinusMath}
+\defaultfontfeatures{
+  Ligatures=TeX,
+  ExternalLocation=fonts/,
+  Extension=.otf
+}
+\setmainfont[
+  UprightFont=*R,
+  ItalicFont=*I,
+  BoldFont=*B,
+  BoldItalicFont=*BI
+]{LibertinusSerif}
+\setsansfont[
+  UprightFont=*R,
+  ItalicFont=*I,
+  BoldFont=*B
+]{LibertinusSans}
+\setmonofont[
+  UprightFont=*R
+]{LibertinusMono}
