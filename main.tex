@@ -16,6 +16,32 @@
 
 \section{Topological space}
 
-A topological space is defined as the pair \(\rb{T,\nu}\) where \(T\) is a set and \(\nu : T \to \pw{T}\) is a function called \textbf{neighbourhood topology} that has to satisfy the following axioms.
+A topological space is defined as the pair \(\rb{T,\nu}\) where \(T\) is a set and \(\nu : T \to \pw{T}\) is a function, called \textbf{neighbourhood topology}, which has to satisfy the following axioms.
+The elements of \(T\) are called \textbf{points} and, given a point \(x\) the elements of \(\nu(x)\) are called \textbf{neighbourhoods} of \(x\).
+
+\begin{enumerate}[label=\textbf{TS.\arabic*}]
+  \item A neighbourhood of a point must contain the point itself.
+  \item All supersets of a neighbourhood of a point are neighbourhoods of that point.
+  \item The intersection of two neighbourhoods of the same point is a neighbourhood of that point.
+  \item Any neighbourhood \(n\) of a point must contain another neighbourhood \(m\) of the same point, such that \(n\) is a neighbourhood of all points in \(m\).
+\end{enumerate}
+
+We can restate the axioms in formal terms.
+For brevity it is implied that \(x, y \in T\) and \(n, m \in \pw{T}\).
+
+\begin{enumerate}[label=\textbf{TS.\arabic*}]
+  \item \(\forall x \forall n : n \in \nu(x) \to x \in n\)
+  \item \(\forall x \forall n \forall m : \rb{n \in \nu(x) \land n \subseteq m} \to m \in \nu(x)\)
+  \item \(\forall x \forall n \forall m : \rb{n \in \nu(x) \land m \in \nu(x)} \to n \cap m \in \nu(x)\)
+  \item \(\forall x \forall n \exists m \forall y : \rb{n \in \nu(x) \land m \subseteq n \land m \in \nu(x) \land y \in m} \to n \in \nu(y)\)
+\end{enumerate}
+
+If \(\rb{T,\nu}\) is a topological space, we say that \(u \in \pw{T}\) is \textbf{open} if it is a neighbourhood of all the points it contains.
+Restating this in formal terms, \(u\) is open if:
+%
+\[\forall x : x \in u \to u \in \nu(x)\]
+%
+We say that \(u \in \pw{\mathfrak{T}}\) is \textbf{closed} if its complement \(\cmpl{u}\) is open.
+It is important to remark that the two definitions are not mutually exclusive, a set could be both open and closed, in which case it’s usually called a clopen set.
 
 \end{document}
