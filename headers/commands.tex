@@ -11,7 +11,12 @@
 
 %bracketing
 \NewDocumentCommand\rb{m}{\left(#1\right)}
+\NewDocumentCommand\qb{m}{\left[#1\right]}
+\NewDocumentCommand\comm{mm}{\qb{{#1}\,,{#2}}}
 
 %set theory
 \NewDocumentCommand\pw{m}{\mathcal{P}\rb{#1}}
 \NewDocumentCommand\cmpl{m}{\complement{\rb{#1}}}
+
+%tensors
+\NewDocumentCommand\Chr{mm}{\Gamma^{#1}_{#2}}
