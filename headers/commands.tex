@@ -14,8 +14,19 @@
 \NewDocumentCommand\qb{m}{\left[#1\right]}
 \NewDocumentCommand\comm{mm}{\qb{{#1}\,,{#2}}}
 
+%logic
+\NewDocumentCommand\lif{}{\rightarrow}
+\NewDocumentCommand\lcif{}{\leftarrow}
+\NewDocumentCommand\liff{}{\leftrightarrow}
+%\NewDocumentCommand\lxor{}{\righttail\mskip-14 mu\lefttail}
+\NewDocumentCommand\lxor{}{\veebar}
+\NewDocumentCommand\lnand{}{\uparrow}
+\NewDocumentCommand\lnor{}{\downarrow}
+\NewDocumentCommand\lnif{}{\righttail}
+\NewDocumentCommand\lncif{}{\lefttail}
+
 %set theory
-\NewDocumentCommand\pw{m}{\mathcal{P}\rb{#1}}
+\NewDocumentCommand\pw{m}{\mathscr{P}\rb{#1}}
 \NewDocumentCommand\cmpl{m}{\complement{\rb{#1}}}
 
 %tensors

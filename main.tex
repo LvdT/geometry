@@ -17,7 +17,7 @@
 
 \section{Topological space}
 \begin{definition}
- A \textbf{neighbourhood topology} is a function \(\nu : T \to \pw{T}\) mapping \textbf{points} (elements of \(T\), from here on denoted by \(x\) or \(y\)) to \textbf{neighbourhoods} (subsets of \(T\), from here on denoted by \(n\) or \(m\)). It must satisfy the following axioms.
+ A \textbf{neighbourhood topology} on a set \(\mathfrak{T}\) is a function \(\nu : \mathfrak{T} \to \pw{\mathfrak{T}}\) mapping \textbf{points} (elements of \(\mathfrak{T}\), from here on denoted by \(x\) or \(y\)) to \textbf{neighbourhoods} (subsets of \(\mathfrak{T}\), from here on denoted by \(n\) or \(m\)). It must satisfy the following axioms.
  \begin{enumerate}[label=\roman*)]
    \item A neighbourhood of a point must contain the point itself.
    \[\forall x \forall n : n \in \nu(x) \to x \in n\]
@@ -31,21 +31,45 @@
 \end{definition}
 
 \begin{definition}
-  A \textbf{topological space} \(\rb{T,\nu}\) is a set \(T\) equipped with a neighbourhood topology \(\nu\).
+  A \textbf{topological space} \(\rb{\mathfrak{T},\nu}\) is a set \(\mathfrak{T}\) equipped with a neighbourhood topology \(\nu\).
 \end{definition}
 
 \begin{definition}
-  \(u \subseteq T\) is \textbf{open} if it is a neighbourhood of all the points it contains.
+  \(u \subseteq \mathfrak{T}\) is \textbf{open} if it is a neighbourhood of all the points it contains.
   \[\forall x : x \in u \to u \in \nu(x)\]
 \end{definition}
 %
 \begin{definition}
-  \(u \subseteq T\) is \textbf{closed} its complement \(\cmpl{u}\) is open.
+  \(u \subseteq \mathfrak{T}\) is \textbf{closed} its complement \(\mathfrak{T} \setminus u\) is open.
 \end{definition}
 %
 \begin{definition}
-  \(u \subseteq T\) is \textbf{clopen} if it is both open and closed.
+  \(u \subseteq \mathfrak{T}\) is \textbf{clopen} if it is both open and closed.
 \end{definition}
+%
+\begin{definition}
+  Two points \(x, y \in \mathfrak{T}\) are said to be \textbf{topologically indistinguishable} if they have exactly the same neighbourhoods.
+  \[\forall n : n \in \nu(x) \liff n \in \nu(y)\]
+\end{definition}
+%
+\begin{definition}
+  Two points \(x, y \in \mathfrak{T}\) are said to be \textbf{topologically distinguishable} if there is at least one neighbourhood of one of the points that isn’t a neighbourhood of the other.
+  \[\exists n : n \in \nu(x) \lxor n \in \nu(y)\]
+\end{definition}
+%
+\begin{proposition}
+  Topological indistinguishability is an equivalence relation.
+\end{proposition}
+\begin{proof}
+  Trivial, the necessary properties are inherited from the biconditional.
+\end{proof}
+%
+\begin{corollary}
+  Topological distinguishability is an apartness relation.
+\end{corollary}
+\begin{proof}
+  The negation of an equivalence relation is an apartness relation.
+\end{proof}
 
 \section{Curvature Tensor}
 
