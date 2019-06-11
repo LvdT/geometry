@@ -17,7 +17,7 @@
 
 \section{Topological space}
 \begin{definition}
- A \textbf{neighbourhood topology} on a set \(\mathfrak{T}\) is a function \(\nu : \mathfrak{T} \to \pw{\mathfrak{T}}\) mapping \textbf{points} (elements of \(\mathfrak{T}\), from here on denoted by \(x\) or \(y\)) to \textbf{neighbourhoods} (subsets of \(\mathfrak{T}\), from here on denoted by \(n\) or \(m\)). It must satisfy the following axioms.
+ A \textbf{neighbourhood topology} on a set \(\mathfrak{T}\) is a function \(\nu : \mathfrak{T} \to \pw{\mathfrak{T}}\) mapping \textbf{points} (elements of \(\mathfrak{T}\), from here on denoted by \(x\), \(y\) or \(z\)) to \textbf{neighbourhoods} (subsets of \(\mathfrak{T}\), from here on denoted by \(n\) or \(m\)). It must satisfy the following axioms.
  \begin{enumerate}[label=\roman*)]
    \item A neighbourhood of a point must contain the point itself.
    \[\forall x \forall n : n \in \nu(x) \to x \in n\]
@@ -29,47 +29,77 @@
    \[\forall x \forall n \exists m \forall y : \rb{n \in \nu(x) \land m \subseteq n \land m \in \nu(x) \land y \in m} \to n \in \nu(y)\]
  \end{enumerate}
 \end{definition}
-
+%
 \begin{definition}
   A \textbf{topological space} \(\rb{\mathfrak{T},\nu}\) is a set \(\mathfrak{T}\) equipped with a neighbourhood topology \(\nu\).
-\end{definition}
-
-\begin{definition}
-  \(u \subseteq \mathfrak{T}\) is \textbf{open} if it is a neighbourhood of all the points it contains.
-  \[\forall x : x \in u \to u \in \nu(x)\]
-\end{definition}
-%
-\begin{definition}
-  \(u \subseteq \mathfrak{T}\) is \textbf{closed} its complement \(\mathfrak{T} \setminus u\) is open.
-\end{definition}
-%
-\begin{definition}
-  \(u \subseteq \mathfrak{T}\) is \textbf{clopen} if it is both open and closed.
 \end{definition}
 %
 \begin{definition}
   Two points \(x, y \in \mathfrak{T}\) are said to be \textbf{topologically indistinguishable} if they have exactly the same neighbourhoods.
-  \[\forall n : n \in \nu(x) \liff n \in \nu(y)\]
+  \[x \equiv y \liff \forall n : n \in \nu(x) \liff n \in \nu(y)\]
 \end{definition}
 %
 \begin{definition}
-  Two points \(x, y \in \mathfrak{T}\) are said to be \textbf{topologically distinguishable} if there is at least one neighbourhood of one of the points that isn’t a neighbourhood of the other.
-  \[\exists n : n \in \nu(x) \lxor n \in \nu(y)\]
+  Two points \(x, y \in \mathfrak{T}\) are said to be \textbf{topologically distinguishable} if they are not topologically indistinguishable, i.e. if there is at least one neighbourhood of one of the points that isn’t a neighbourhood of the other.
+  \[x \nequiv y \liff \exists n : n \in \nu(x) \lxor n \in \nu(y)\]
 \end{definition}
 %
 \begin{proposition}
-  Topological indistinguishability is an equivalence relation.
+  Topological indistinguishability is an equivalence relation, i.e. \((\mathfrak{T},\equiv)\) is a setoid.
 \end{proposition}
 \begin{proof}
   Trivial, the necessary properties are inherited from the biconditional.
 \end{proof}
 %
 \begin{corollary}
-  Topological distinguishability is an apartness relation.
+  Topological distinguishability is an apartness relation, i.e. \((\mathfrak{T},\nequiv)\) is a constructive setoid.
 \end{corollary}
 \begin{proof}
-  The negation of an equivalence relation is an apartness relation.
+  The dual of an equivalence relation is an apartness relation.
 \end{proof}
+
+\begin{definition}
+  A point \(x\) is a \textbf{limit point} for \(u\) if each of its neighbourhoods also contains at least one point of \(u\) distinguishable from \(x\) itself.
+  \[\mathrm{Lim}(x,u) \liff \forall n \exists y : n \in \nu(x) \lif \rb{y \in n \land y \in u \land x \nequiv y}\]
+\end{definition}
+
+\begin{definition}
+  A point \(x\) is an \textbf{isolated point} in \(u\) if it has at least one neighbourhood that contains no other points in \(u\) except for those indistinguishable from \(x\) itself.
+  \[\mathrm{Iso}(x,u) \liff \exists n \forall y : n \in \nu(x) \land \rb{y \in n \lif \rb{y \notin u \lxor x \equiv y}}\]
+\end{definition}
+
+\begin{proposition}
+  All points in a set are either limit points or isolated points.
+  \[x \in u \lif \mathrm{Lim}(x,u) \lxor \mathrm{Iso}(x,u)\]
+\end{proposition}
+
+\begin{definition}
+  A point \(x\) is an \textbf{interior point} for \(u\) if it has at least one neighbourhood that is entirely contained in \(u\). The point must therefore belong to the set.
+  \[\mathrm{Int}(x,u) \liff \exists n \forall y : \rb{n \in \nu(x) \land y \in n} \lif y \in u\]
+\end{definition}
+
+\begin{definition}
+  A point \(x\) is a \textbf{boundary point} for \(u\) if each of its neighbourhoods contains at least one point belonging to \(u\) and at least one point not belonging to \(u\).
+  \[\mathrm{Bnd}(x,u) \liff \forall n \exists y \exists z : n \in \nu(x) \land y \in n \land y \in u \land z \in n \land z \notin u\]
+\end{definition}
+
+\begin{definition}
+  A point \(x\) is an \textbf{exterior point} for \(u\) if it has at least one neighbourhood that is entirely contained in \(u\). The point must therefore not belong to the set.
+  \[\mathrm{Ext}(x,u) \liff \exists n \forall y : \rb{n \in \nu(x) \land y \in n} \lif y \notin u\]
+\end{definition}
+
+\begin{definition}
+  \(u\) is \textbf{open} if it is a neighbourhood of all the points it contains.
+  \[\mathrm{Open}(u) \liff \forall x : x \in u \to u \in \nu(x)\]
+\end{definition}
+%
+\begin{definition}
+  \(u\) is \textbf{closed} its complement \(\mathfrak{T} \setminus u\) is open.
+\end{definition}
+%
+\begin{observation}
+  Despite what the choice of terminology might suggest, the definitions of open and closed are not mutually exclusive. A set that is both open and closed is said to be \textbf{clopen}.
+\end{observation}
 
 \section{Curvature Tensor}
 
