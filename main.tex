@@ -17,16 +17,33 @@
 
 \section{Topological space}
 \begin{definition}
- A \textbf{neighbourhood topology} on a set \(\mathfrak{T}\) is a function \(\nu : \mathfrak{T} \to \pw{\mathfrak{T}}\) mapping \textbf{points} (elements of \(\mathfrak{T}\), from here on denoted by \(x\), \(y\) or \(z\)) to \textbf{neighbourhoods} (subsets of \(\mathfrak{T}\), from here on denoted by \(n\) or \(m\)). It must satisfy the following axioms.
+  A \textbf{filter} on a poset \((\mathfrak{S},\preceq)\) is a subset \(\phi \subseteq \mathfrak{S}\) that satisfies the following axioms. \begin{enumerate}[label=\roman*)]
+     \item It is non-empty.
+     \[\exists x : x \in \phi\]
+     \item It is upward closed, i.e. it contains all elements greater than its elements.
+     \[\forall x \forall y : \rb{x \in \phi \land x \preceq y} \lif \rb{y \in \phi}\]
+     \item It is downward directed, i.e. every pair of elements must have a lower bound.
+     \[\forall x \forall y \exists z : \rb{x \in \phi \land y \in \phi} \lif \rb{z \in \phi \land z \preceq y \land z \preceq y}\]
+   \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  A \textbf{filter of subsets} on a set \(\mathfrak{S}\) is a filter on the poset \((\pw{\mathfrak{S}},\subseteq)\).
+\end{definition}
+
+\begin{observation}
+  For future convenience, we denote the set of all filters of subsets on \(\mathfrak{S}\) as \(\mathscr{F}\rb{\mathfrak{S}}\).
+\end{observation}
+
+\begin{definition}
+ A \textbf{neighbourhood topology} on a set \(\mathfrak{T}\) is a function \(\nu : \mathfrak{T} \to \mathscr{F}\rb{\mathfrak{T}}\) mapping \textbf{points} (elements of \(\mathfrak{T}\), from here on denoted by \(x\), \(y\) or \(z\)) to filters of subsets on \(\mathfrak{T}\).
+ The elements of the filter \(\nu(x)\) are called \textbf{neighbourhoods} of \(x\).
+ The function \(\nu\) must satisfy the following axioms.
  \begin{enumerate}[label=\roman*)]
-   \item A neighbourhood of a point must contain the point itself.
+   \item All neighbourhoods of a point must contain the point itself.
    \[\forall x \forall n : n \in \nu(x) \to x \in n\]
-   \item All supersets of a neighbourhood of a point are neighbourhoods of that point.
-   \[\forall x \forall n \forall m : \rb{n \in \nu(x) \land n \subseteq m} \to m \in \nu(x)\]
-   \item The intersection of two neighbourhoods of the same point is a neighbourhood of that point.
-   \[\forall x \forall n \forall m : \rb{n \in \nu(x) \land m \in \nu(x)} \to n \cap m \in \nu(x)\]
-   \item Any neighbourhood \(n\) of a point must contain another neighbourhood \(m\) of the same point, such that \(n\) is a neighbourhood of all points in \(m\).
-   \[\forall x \forall n \exists m \forall y : \rb{n \in \nu(x) \land m \subseteq n \land m \in \nu(x) \land y \in m} \to n \in \nu(y)\]
+   \item Any neighbourhood \(n\) of a point must contain at least another neighbourhood \(m\) of the same point, such that \(n\) is a neighbourhood of all points in \(m\).
+   \[\forall x \forall n \exists m \forall y : n \in \nu(x) \lif \rb{m \in \nu(x) \land m \subseteq n \land \rb{y \in m \lif n \in \nu(y)}}\]
  \end{enumerate}
 \end{definition}
 %

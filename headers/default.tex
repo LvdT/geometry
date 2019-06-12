@@ -20,6 +20,10 @@
 \Style{DSymb={\mathrm{d}},IntegrateDifferentialDSymb={\mathrm{d}}}
 
 \usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\AtBeginDocument{%
+  \let\phi\varphi
+  \let\epsilon\varepsilon
+}
 \defaultfontfeatures{Ligatures=TeX,ExternalLocation=fonts/,Extension=.otf}
 \setmathfont{XITS Math}
 \setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITSMath}
